@@ -42,4 +42,15 @@ public class Line : MonoBehaviour
             edgeCol.points = points.ToArray();
         }
     }
+
+	void OnTriggerEnter2D (Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Icon")
+		{
+			//Debug.Log ("Hit boy");
+			collision.GetComponent<Icon>().Linked = true;
+		}
+	}
+		
+
 }
