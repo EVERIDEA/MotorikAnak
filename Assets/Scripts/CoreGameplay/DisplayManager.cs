@@ -41,9 +41,9 @@ public class DisplayManager : MonoBehaviour
     {
         switch(e.Type)
         {
-            case EMainMenuButton.PLAY:
+            case EMainMenuButton.MAIN_MENU_PLAY:
                 _ListOfDisplay["MainMenu"].SetActive(false);
-                _ListOfDisplay["StoryMenu"].SetActive(true);
+                _ListOfDisplay["LevelSelect"].SetActive(true);
                 break;
             case EMainMenuButton.HELP:
                 _ListOfDisplay["HelpInstruction"].SetActive(e.IsActive);
@@ -68,7 +68,7 @@ public class DisplayManager : MonoBehaviour
                 }
                 break;
             case EMainMenuButton.START_GAME:
-                _ListOfDisplay["StoryMenu"].SetActive(false);
+                _ListOfDisplay["LevelSelect"].SetActive(false);
                 if(e.IsActive)
                 {
                     _ListOfDisplay["Gameplay"].SetActive(true);
