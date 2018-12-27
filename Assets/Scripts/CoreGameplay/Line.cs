@@ -18,12 +18,7 @@ public class Line : MonoBehaviour
             SetPoint(mousePos);
             return;
         }
-
-        /*
-         * Check If mouse move enough to insert new point
-         * If it has : Insert point at mouse position
-         */
-
+        
         if (Vector2.Distance(points.Last(),mousePos)>.1f)
         {
             SetPoint(mousePos);
@@ -40,6 +35,14 @@ public class Line : MonoBehaviour
         if (points.Count>1)
         {
             edgeCol.points = points.ToArray();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.gameObject.GetComponent<ObjectTarget>().Type == EObjectTarget.END_POINT) {
+            Debug.Log("HIT LINE");
+            EventManager.TriggerEvent(new ResultGameplayEvent(true));
         }
     }
 }

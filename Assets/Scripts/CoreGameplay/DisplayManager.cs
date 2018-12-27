@@ -65,6 +65,8 @@ public class DisplayManager : MonoBehaviour
                         x.Value.SetActive(true);
                     else
                         x.Value.SetActive(false);
+
+                    EventManager.TriggerEvent(new EndGameplayEvent());
                 }
                 break;
             case EMainMenuButton.START_GAME:
@@ -72,11 +74,18 @@ public class DisplayManager : MonoBehaviour
                 if(e.IsActive)
                 {
                     _ListOfDisplay["Gameplay"].SetActive(true);
+                    EventManager.TriggerEvent(new InitGameplayEvent());
                 }
                 else
                 {
                     _ListOfDisplay["MainMenu"].SetActive(true);
                 }
+                break;
+            case EMainMenuButton.WIN:
+                _ListOfDisplay["WinUI"].SetActive(true);
+                break;
+            case EMainMenuButton.FAIL:
+                _ListOfDisplay["FailUI"].SetActive(true);
                 break;
         }
     }
