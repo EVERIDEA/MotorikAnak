@@ -12,7 +12,14 @@ public class ButtonAction
     public bool IsObjectActive = false;
     public EMainMenuButton Type;
 }
-
+[System.Serializable]
+public class DirectButtonAction
+{
+    public string Id;
+    public GameObject ButtonObject;
+    public bool IsObjectActive = false;
+    public string TargetObjectId;
+}
 public abstract class ButtonManager : MonoBehaviour
 {
 
