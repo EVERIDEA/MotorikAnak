@@ -40,9 +40,15 @@ public class Line : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.gameObject.GetComponent<ObjectTarget>().Type == EObjectTarget.END_POINT) {
+        if (c.gameObject.GetComponent<ObjectTarget>().Type == EObjectTarget.END_POINT) 
+		{
             Debug.Log("HIT LINE");
             EventManager.TriggerEvent(new ResultGameplayEvent(true));
         }
+
+		if (c.gameObject.GetComponent<ObjectTarget> ().Type == EObjectTarget.OBSTACLE) 
+		{
+			Debug.Log ("HIT OBSTACLE");
+		}
     }
 }

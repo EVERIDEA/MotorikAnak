@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
@@ -11,6 +12,14 @@ public class GameplayManager : MonoBehaviour
     bool IsStart = false;
 
     List<GameObject> _LineDrawer = new List<GameObject>();
+
+	public List <Level> _Level;
+
+	[SerializeField]
+	int _ThisLevel;
+	[SerializeField]
+	int _NextLevel;
+
 
     private void Awake()
     {
@@ -23,6 +32,7 @@ public class GameplayManager : MonoBehaviour
 
     public void InitListener(InitGameplayEvent e) {
         IsStart = true;
+		LevelHandler ();
     }
 
 	void Update ()
@@ -86,7 +96,7 @@ public class GameplayManager : MonoBehaviour
         IsStart = false;
         if (e.IsWin)
         {
-            EventManager.TriggerEvent(new MainMenuButtonEvent(EMainMenuButton.WIN));
+			EventManager.TriggerEvent(new MainMenuButtonEvent(EMainMenuButton.WIN));
         }
         else
         {
@@ -118,4 +128,18 @@ public class GameplayManager : MonoBehaviour
                 break;
         }
     }
+
+	private void LevelHandler()
+	{
+		_ThisLevel = Global.Level;
+		_Level [_ThisLevel].LevelObject.SetActive (true);
+
+	}
+
+	private void NextLevel()
+	{
+		_Level [_ThisLevel].LevelObject.SetActive (false);
+		_ThisLevel += 1;
+		_Level [_ThisLevel].LevelObject.SetActive (true);
+	}
 }

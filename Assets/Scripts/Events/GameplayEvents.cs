@@ -19,7 +19,8 @@ public class EndGameplayEvent : GameEvent
 
 }
 
-public class FailHandlerEvent : GameEvent {
+public class FailHandlerEvent : GameEvent 
+{
     public EFailType Type;
 
     public FailHandlerEvent(EFailType type)
@@ -27,3 +28,4 @@ public class FailHandlerEvent : GameEvent {
         Type = type;
     }
 }
+	
