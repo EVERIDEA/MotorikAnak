@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainMenuButton : MonoBehaviour, IButtonInit {
-
+public class LevelSelectMenuButton : MonoBehaviour
+{
     [SerializeField]
-    ButtonAction[] _MainMenuBtn;
+    ButtonAction[] _LevelSelectButton;
 
     // Use this for initialization
     void Awake()
@@ -16,11 +16,11 @@ public class MainMenuButton : MonoBehaviour, IButtonInit {
 
     public void InitOnAwake()
     {
-        foreach (ButtonAction btn in _MainMenuBtn)
+        foreach (ButtonAction btn in _LevelSelectButton)
         {
             btn.ButtonObject.AddComponent<Button>().onClick.AddListener(delegate
             {
-                EventManager.TriggerEvent(new MainMenuButtonEvent(btn.Type));
+                EventManager.TriggerEvent(new MainMenuButtonEvent(btn.Type, btn.IsObjectActive));
             });
         }
     }

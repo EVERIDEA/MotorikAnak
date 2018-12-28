@@ -21,3 +21,7 @@ Assets/BigAssets/Placeholder/freeicon.png
 Library/
 Temp/
 Assets/BigAssets.meta
+.vs/
+MotorikAnak.csproj
+MotorikAnak.sln
+MotorikAnak.Plugins.csproj
