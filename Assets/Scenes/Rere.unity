@@ -1580,6 +1580,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 1800306326634650, guid: 54d9137d1cd93d742b4650c824f79ad9, type: 2}
+  _Level: []
+  _ThisLevel: 0
+  _NextLevel: 0
 --- !u!1 &653708704
 GameObject:
   m_ObjectHideFlags: 0

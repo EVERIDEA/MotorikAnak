@@ -4295,7 +4295,7 @@ MonoBehaviour:
   - NameId: 
     ButtonObject: {fileID: 899062140}
     IsObjectActive: 0
-    Type: 3
+    Type: 8
 --- !u!1 &1741384313
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,4 +28,9 @@ public class FailHandlerEvent : GameEvent
         Type = type;
     }
 }
+
+public class NextLevelEvent : GameEvent
+{
+	
+}
 	

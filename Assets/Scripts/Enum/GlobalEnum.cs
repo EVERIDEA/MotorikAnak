@@ -6,7 +6,7 @@ public enum EMainMenuButton
 {
     MAIN_MENU_PLAY, HELP, EXIT, RESTART,
     PAUSE,
-    START_GAME, WIN, FAIL
+    START_GAME, WIN, FAIL, NEXT
 }
 
 public enum EFailType

@@ -27,14 +27,19 @@ public class GameplayManager : MonoBehaviour
         EventManager.AddListener<EndGameplayEvent>(EndGameListener);
         EventManager.AddListener<FailHandlerEvent>(FailListener);
         EventManager.AddListener<ResultGameplayEvent>(ResultHandler);
+		EventManager.AddListener<NextLevelEvent>(NextLevel);
     }
+
+	private void Start()
+	{
+		LevelHandler ();
+	}
 
 
     public void InitListener(InitGameplayEvent e) {
         IsStart = true;
-		LevelHandler ();
     }
-
+		
 	void Update ()
     {
         if (IsStart)
@@ -106,7 +111,8 @@ public class GameplayManager : MonoBehaviour
 
     private void FailListener(FailHandlerEvent e)
     {
-        ResultHandler (new ResultGameplayEvent(true));
+        ResultHandler (new 
+			ResultGameplayEvent(true));
         switch (e.Type) {
             case EFailType.NotPointTarget:
 
@@ -136,10 +142,13 @@ public class GameplayManager : MonoBehaviour
 
 	}
 
-	private void NextLevel()
+	private void NextLevel(NextLevelEvent e)
 	{
 		_Level [_ThisLevel].LevelObject.SetActive (false);
 		_ThisLevel += 1;
 		_Level [_ThisLevel].LevelObject.SetActive (true);
+		EventManager.TriggerEvent (new EndGameplayEvent ());
+		IsStart = true;
+		Debug.Log ("Next");
 	}
 }

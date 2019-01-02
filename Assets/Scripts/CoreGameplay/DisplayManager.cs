@@ -87,6 +87,10 @@ public class DisplayManager : MonoBehaviour
             case EMainMenuButton.FAIL:
                 _ListOfDisplay["FailUI"].SetActive(true);
                 break;
+			case EMainMenuButton.NEXT:
+				EventManager.TriggerEvent (new NextLevelEvent ());
+				_ListOfDisplay["WinUI"].SetActive(false);
+				break;
         }
     }
 

@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ButtonManager\ButtonManager.cs" />
+     <Compile Include="Assets\Scripts\ButtonManager\FailPopUpButton.cs" />
      <Compile Include="Assets\Scripts\ButtonManager\GameplayButton.cs" />
      <Compile Include="Assets\Scripts\ButtonManager\HelpInstructionButton.cs" />
      <Compile Include="Assets\Scripts\ButtonManager\IButtonInit.cs" />
@@ -66,6 +67,7 @@
      <Compile Include="Assets\Scripts\CoreGameplay\ObjectTarget.cs" />
      <Compile Include="Assets\Scripts\Enum\GlobalEnum.cs" />
      <Compile Include="Assets\Scripts\Events\GameplayEvents.cs" />
+     <Compile Include="Assets\Scripts\Events\GameplayUIEvents.cs" />
      <Compile Include="Assets\Scripts\Events\MainMenuEvents.cs" />
      <Compile Include="Assets\Scripts\Reuseable\Backeend.cs" />
      <Compile Include="Assets\Scripts\Reuseable\EventManager.cs" />
@@ -76,6 +78,7 @@
      <Compile Include="Assets\Scripts\Reuseable\ObjectPooler.cs" />
      <Compile Include="Assets\Scripts\Reuseable\ScriptableObjectEnum.cs" />
      <Compile Include="Assets\Scripts\Reuseable\ShareScreenshot.cs" />
+     <Compile Include="Assets\Scripts\UIManager\GameplayUIManager.cs" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>C:/Program Files/UNITY/2017.4.17f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>
  </Reference>
