@@ -17,8 +17,6 @@ public class GameplayManager : MonoBehaviour
 
 	[SerializeField]
 	int _ThisLevel;
-	[SerializeField]
-	int _NextLevel;
 
 
     private void Awake()
@@ -50,29 +48,47 @@ public class GameplayManager : MonoBehaviour
                 Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
                 Debug.Log(mousePos);
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-                if (hit.transform == null)
-                    return;
-                if (hit.transform.gameObject.name == "A")
-                {
-                    Debug.Log("A");
-                }
-                else
-                {
-                    return; //Fail
-                }
-                if (_LineDrawer.Count >= 1)
-                    return;
+				if (hit.transform == null) 
+				{
+					return;
+				}
+				if (hit.transform!=null) 
+				{
+					if (hit.transform.gameObject.name == "A")
+					{
+						Debug.Log("Draw Line");
+						GameObject lineGo = Instantiate(linePrefab);
+						_LineDrawer.Add(lineGo);
 
+						activeLine = lineGo.GetComponent<Line>();
+						lineGo.transform.parent = this.gameObject.transform;
+					}
+					if (hit.transform.gameObject.name =="B") 
+					{
+						EventManager.TriggerEvent (new FailPopUpEvents ("1",true));
+						return;
+					}
+					else
+					{
+						return; //Fail
+					}
+				}
 
-                GameObject lineGo = Instantiate(linePrefab);
-                _LineDrawer.Add(lineGo);
-
-                activeLine = lineGo.GetComponent<Line>();
-                lineGo.transform.parent = this.gameObject.transform;
+			    /*
+				if (_LineDrawer.Count >= 1) 
+				{
+					return;
+				}
+				*/
             }
 
             if (Input.GetMouseButtonUp(0))
-            {
+			{
+				if (activeLine!=null) 
+				{
+					EventManager.TriggerEvent (new FailPopUpEvents ("3", true));
+				}
+
                 activeLine = null;
             }
 
@@ -139,7 +155,6 @@ public class GameplayManager : MonoBehaviour
 	{
 		_ThisLevel = Global.Level;
 		_Level [_ThisLevel].LevelObject.SetActive (true);
-
 	}
 
 	private void NextLevel(NextLevelEvent e)
