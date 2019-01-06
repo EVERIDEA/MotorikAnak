@@ -7,7 +7,6 @@ public class Line : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     public EdgeCollider2D edgeCol;
-	public bool IsTriggerOnce=true;
 
     List <Vector2> points;
 
@@ -45,13 +44,11 @@ public class Line : MonoBehaviour
 		{
 			Debug.Log("HIT LINE");
 			EventManager.TriggerEvent(new ResultGameplayEvent(true));
-			IsTriggerOnce = true;
 		}
 
 		if (c.gameObject.GetComponent<ObjectTarget> ().Type == EObjectTarget.OBSTACLE) 
 		{
 			Debug.Log ("HIT OBSTACLE");
-			IsTriggerOnce = true;
 		}
     }
 }
