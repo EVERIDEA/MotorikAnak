@@ -10,6 +10,7 @@ public class GameplayManager : MonoBehaviour
     Line activeLine;
 
     bool IsStart = false;
+	bool CheckLine = false;
 
     List<GameObject> _LineDrawer = new List<GameObject>();
 
@@ -55,9 +56,11 @@ public class GameplayManager : MonoBehaviour
 				if ((hit.transform.gameObject.name == "A")||(hit.transform.gameObject.name == "Line(Clone)"))
                 {
                     Debug.Log("A");
+					CheckLine = true;
                 }
                 else
                 {
+					EventManager.TriggerEvent (new FailPopUpEvents ("1", true));
                     return; //Fail
                 }
                 //if (_LineDrawer.Count >= 1)
@@ -74,6 +77,11 @@ public class GameplayManager : MonoBehaviour
             if (Input.GetMouseButtonUp(0))
             {
                 activeLine = null;
+				if (CheckLine==true) 
+				{
+					EventManager.TriggerEvent (new FailPopUpEvents ("3", true));
+					CheckLine = false;
+				}
             }
 
             /*
@@ -149,6 +157,7 @@ public class GameplayManager : MonoBehaviour
 		_Level [_ThisLevel].LevelObject.SetActive (true);
 		EventManager.TriggerEvent (new EndGameplayEvent ());
 		IsStart = true;
+		CheckLine = false;
 		Debug.Log ("Next");
 	}
 }

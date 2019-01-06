@@ -2346,7 +2346,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 1800306326634650, guid: 54d9137d1cd93d742b4650c824f79ad9, type: 2}
-  _LineDrawer: []
   _Level:
   - Id: 1
     LevelObject: {fileID: 1741384313}
@@ -2400,6 +2399,7 @@ MonoBehaviour:
     LevelObject: {fileID: 245556042}
     IsClear: 0
   _ThisLevel: 0
+  _NextLevel: 0
 --- !u!1 &653708704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3558,7 +3558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1133110834
 Transform:
   m_ObjectHideFlags: 0
