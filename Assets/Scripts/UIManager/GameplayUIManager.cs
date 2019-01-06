@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class GameplayPopUp {
@@ -18,9 +19,22 @@ public class GameplayUIManager : MonoBehaviour {
     {
         EventManager.AddListener<FailPopUpEvents>(FailPopUpListener);
 
-        for (int i = 0; i < _FailPopUp.Length; i++) {
+        for (int i = 0; i < _FailPopUp.Length; i++) 
+		{
             _FailPopUpData.Add(_FailPopUp[i].Id, _FailPopUp[i].ObjectUI);
         }
+
+		foreach (GameplayPopUp popup in _FailPopUp) 
+		{
+			popup.ObjectUI.AddComponent<Button>().onClick.AddListener(delegate
+				{
+					for (int i = 0; i < _FailPopUp.Length; i++) 
+					{
+						_FailPopUp[i].ObjectUI.SetActive (false);
+					}
+
+				});
+		}
     }
 
     private void FailPopUpListener(FailPopUpEvents e)
