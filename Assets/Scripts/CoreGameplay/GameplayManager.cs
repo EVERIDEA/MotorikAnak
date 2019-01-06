@@ -52,7 +52,7 @@ public class GameplayManager : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
                 if (hit.transform == null)
                     return;
-                if (hit.transform.gameObject.name == "A")
+				if ((hit.transform.gameObject.name == "A")||(hit.transform.gameObject.name == "Line(Clone)"))
                 {
                     Debug.Log("A");
                 }
@@ -60,8 +60,8 @@ public class GameplayManager : MonoBehaviour
                 {
                     return; //Fail
                 }
-                if (_LineDrawer.Count >= 1)
-                    return;
+                //if (_LineDrawer.Count >= 1)
+                //    return;
 
 
                 GameObject lineGo = Instantiate(linePrefab);
