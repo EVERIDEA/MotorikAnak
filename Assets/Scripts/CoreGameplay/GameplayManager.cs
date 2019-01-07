@@ -14,13 +14,8 @@ public class GameplayManager : MonoBehaviour
 
     List<GameObject> _LineDrawer = new List<GameObject>();
 
-	public List <Level> _Level;
-
 	[SerializeField]
-	int _ThisLevel;
-	[SerializeField]
-	int _NextLevel;
-
+	int _ThisLevel = 1;
 
     private void Awake()
     {
@@ -33,7 +28,7 @@ public class GameplayManager : MonoBehaviour
 
 	private void Start()
 	{
-		LevelHandler ();
+		
 	}
 
 
@@ -142,19 +137,15 @@ public class GameplayManager : MonoBehaviour
                 break;
         }
     }
-
-	private void LevelHandler()
-	{
-		_ThisLevel = Global.Level;
-		_Level [_ThisLevel].LevelObject.SetActive (true);
-
-	}
-
+		
 	private void NextLevel(NextLevelEvent e)
 	{
-		_Level [_ThisLevel].LevelObject.SetActive (false);
+		EventManager.TriggerEvent (new GameplayLevelEvents (_ThisLevel,false));
+
 		_ThisLevel += 1;
-		_Level [_ThisLevel].LevelObject.SetActive (true);
+
+		EventManager.TriggerEvent (new GameplayLevelEvents (_ThisLevel,true));
+
 		EventManager.TriggerEvent (new EndGameplayEvent ());
 		IsStart = true;
 		CheckLine = false;

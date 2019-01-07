@@ -69,6 +69,7 @@ public class DisplayManager : MonoBehaviour
                     EventManager.TriggerEvent(new EndGameplayEvent());
                 }
                 break;
+			/*
             case EMainMenuButton.START_GAME:
                 _ListOfDisplay["LevelSelect"].SetActive(false);
                 if(e.IsActive)
@@ -81,6 +82,137 @@ public class DisplayManager : MonoBehaviour
                     _ListOfDisplay["MainMenu"].SetActive(true);
                 }
                 break;
+            */
+			case EMainMenuButton.LEVEL1:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (1,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+				_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL2:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (2,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL3:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (3,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL4:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (4,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL5:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (5,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL6:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (6,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL7:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (7,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL8:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (8,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL9:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (9,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL10:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if(e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					EventManager.TriggerEvent (new GameplayLevelEvents (10,true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
             case EMainMenuButton.WIN:
                 _ListOfDisplay["WinUI"].SetActive(true);
                 break;
