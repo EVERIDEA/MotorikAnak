@@ -61,8 +61,6 @@
      <Compile Include="Assets\Scripts\ButtonManager\PauseButton.cs" />
      <Compile Include="Assets\Scripts\CoreGameplay\DisplayManager.cs" />
      <Compile Include="Assets\Scripts\CoreGameplay\GameplayManager.cs" />
-     <Compile Include="Assets\Scripts\CoreGameplay\Icon.cs" />
-     <Compile Include="Assets\Scripts\CoreGameplay\Level.cs" />
      <Compile Include="Assets\Scripts\CoreGameplay\Line.cs" />
      <Compile Include="Assets\Scripts\CoreGameplay\ObjectTarget.cs" />
      <Compile Include="Assets\Scripts\Enum\GlobalEnum.cs" />
