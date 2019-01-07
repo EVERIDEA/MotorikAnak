@@ -32,7 +32,7 @@ public class GameplayUIManager : MonoBehaviour {
 					{
 						_FailPopUp[i].ObjectUI.SetActive (false);
 					}
-
+					EventManager.TriggerEvent (new RestartLevelEvent ());
 				});
 		}
     }

@@ -33,4 +33,8 @@ public class NextLevelEvent : GameEvent
 {
 	
 }
-	
+
+public class RestartLevelEvent : GameEvent
+{
+
+}

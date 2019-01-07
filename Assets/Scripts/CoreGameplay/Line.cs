@@ -49,7 +49,7 @@ public class Line : MonoBehaviour
 		if (c.gameObject.GetComponent<ObjectTarget> ().Type == EObjectTarget.OBSTACLE) 
 		{
 			Debug.Log ("HIT OBSTACLE");
-			EventManager.TriggerEvent (new FailPopUpEvents ("3", true));
+			EventManager.TriggerEvent (new FailHandlerEvent (EFailType.CrossLine));
 		}
     }
 }

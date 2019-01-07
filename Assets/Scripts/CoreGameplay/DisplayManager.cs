@@ -68,6 +68,7 @@ public class DisplayManager : MonoBehaviour
 
                     EventManager.TriggerEvent(new EndGameplayEvent());
                 }
+				EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
                 break;
 			/*
             case EMainMenuButton.START_GAME:
@@ -88,6 +89,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 1;
 					EventManager.TriggerEvent (new GameplayLevelEvents (1,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}
@@ -101,6 +103,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 2;
 					EventManager.TriggerEvent (new GameplayLevelEvents (2,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}
@@ -114,6 +117,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 3;
 					EventManager.TriggerEvent (new GameplayLevelEvents (3,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}
@@ -127,6 +131,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 4;
 					EventManager.TriggerEvent (new GameplayLevelEvents (4,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}
@@ -140,6 +145,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 5;
 					EventManager.TriggerEvent (new GameplayLevelEvents (5,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}
@@ -153,6 +159,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 6;
 					EventManager.TriggerEvent (new GameplayLevelEvents (6,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}
@@ -166,6 +173,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 7;
 					EventManager.TriggerEvent (new GameplayLevelEvents (7,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}
@@ -179,6 +187,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 8;
 					EventManager.TriggerEvent (new GameplayLevelEvents (8,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}
@@ -192,6 +201,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 9;
 					EventManager.TriggerEvent (new GameplayLevelEvents (9,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}
@@ -205,6 +215,7 @@ public class DisplayManager : MonoBehaviour
 				if(e.IsActive)
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 10;
 					EventManager.TriggerEvent (new GameplayLevelEvents (10,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 				}

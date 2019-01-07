@@ -14,9 +14,6 @@ public class GameplayManager : MonoBehaviour
 
     List<GameObject> _LineDrawer = new List<GameObject>();
 
-	[SerializeField]
-	int _ThisLevel = 1;
-
     private void Awake()
     {
         EventManager.AddListener<InitGameplayEvent>(InitListener);
@@ -24,6 +21,7 @@ public class GameplayManager : MonoBehaviour
         EventManager.AddListener<FailHandlerEvent>(FailListener);
         EventManager.AddListener<ResultGameplayEvent>(ResultHandler);
 		EventManager.AddListener<NextLevelEvent>(NextLevel);
+		EventManager.AddListener<RestartLevelEvent>(Restart);
     }
 
 	private void Start()
@@ -55,7 +53,7 @@ public class GameplayManager : MonoBehaviour
                 }
                 else
                 {
-					EventManager.TriggerEvent (new FailPopUpEvents ("1", true));
+					EventManager.TriggerEvent (new FailHandlerEvent (EFailType.NotPointTarget));
                     return; //Fail
                 }
                 //if (_LineDrawer.Count >= 1)
@@ -74,7 +72,7 @@ public class GameplayManager : MonoBehaviour
                 activeLine = null;
 				if (CheckLine==true) 
 				{
-					EventManager.TriggerEvent (new FailPopUpEvents ("3", true));
+					EventManager.TriggerEvent (new FailHandlerEvent (EFailType.HandsUp));
 					CheckLine = false;
 				}
             }
@@ -114,41 +112,53 @@ public class GameplayManager : MonoBehaviour
 
     private void FailListener(FailHandlerEvent e)
     {
-        ResultHandler (new 
-			ResultGameplayEvent(true));
         switch (e.Type) {
-            case EFailType.NotPointTarget:
-
-                break;
+			case EFailType.NotPointTarget:
+				EventManager.TriggerEvent (new FailPopUpEvents ("1", true));
+				IsStart = false;
+            	break;
             case EFailType.Duration:
-
+				EventManager.TriggerEvent (new FailPopUpEvents ("2", true));
+				IsStart = false;
                 break;
             case EFailType.HandsUp:
-
+				EventManager.TriggerEvent (new FailPopUpEvents ("3", true));
+				IsStart = false;
                 break;
             case EFailType.CrossLine:
-
+				EventManager.TriggerEvent (new FailPopUpEvents ("4", true));
+				IsStart = false;
                 break;
             case EFailType.Backward:
-
+				EventManager.TriggerEvent (new FailPopUpEvents ("5", true));
+				IsStart = false;
                 break;
             case EFailType.PointEndTarget:
-
+				EventManager.TriggerEvent (new FailPopUpEvents ("6", true));
+				IsStart = false;
                 break;
         }
     }
 		
 	private void NextLevel(NextLevelEvent e)
 	{
-		EventManager.TriggerEvent (new GameplayLevelEvents (_ThisLevel,false));
+		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 
-		_ThisLevel += 1;
+		Global.Level += 1;
 
-		EventManager.TriggerEvent (new GameplayLevelEvents (_ThisLevel,true));
+		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 
 		EventManager.TriggerEvent (new EndGameplayEvent ());
 		IsStart = true;
 		CheckLine = false;
 		Debug.Log ("Next");
+	}
+	private void Restart(RestartLevelEvent e)
+	{
+		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
+		EventManager.TriggerEvent (new EndGameplayEvent ());
+		IsStart = true;
+		CheckLine = false;
+		Debug.Log ("Restart");
 	}
 }
