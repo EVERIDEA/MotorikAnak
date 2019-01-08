@@ -35,6 +35,7 @@ public class Line : MonoBehaviour
         if (points.Count>1)
         {
             edgeCol.points = points.ToArray();
+			edgeCol.enabled = true;
         }
     }
 

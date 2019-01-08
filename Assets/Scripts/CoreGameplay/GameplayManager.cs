@@ -8,7 +8,6 @@ public class GameplayManager : MonoBehaviour
 {
     public GameObject linePrefab;
     Line activeLine;
-
     bool IsStart = false;
 	bool CheckLine = false;
 
@@ -60,7 +59,7 @@ public class GameplayManager : MonoBehaviour
                 //    return;
 
 
-                GameObject lineGo = Instantiate(linePrefab);
+				GameObject lineGo = Instantiate(linePrefab);
                 _LineDrawer.Add(lineGo);
 
                 activeLine = lineGo.GetComponent<Line>();
@@ -84,6 +83,7 @@ public class GameplayManager : MonoBehaviour
             {
                 Vector2 x = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 activeLine.UpdateLine(x);
+				//activeLine.GetComponent<EdgeCollider2D>().enabled=true;
             }
         }
     }
