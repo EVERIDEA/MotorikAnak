@@ -92,10 +92,11 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 1;
 					EventManager.TriggerEvent (new GameplayLevelEvents (1,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
-				_ListOfDisplay["MainMenu"].SetActive(true);
+					_ListOfDisplay["MainMenu"].SetActive(true);
 				}
 				break;
 			case EMainMenuButton.LEVEL2:
@@ -106,6 +107,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 2;
 					EventManager.TriggerEvent (new GameplayLevelEvents (2,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -120,6 +122,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 3;
 					EventManager.TriggerEvent (new GameplayLevelEvents (3,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -134,6 +137,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 4;
 					EventManager.TriggerEvent (new GameplayLevelEvents (4,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -148,6 +152,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 5;
 					EventManager.TriggerEvent (new GameplayLevelEvents (5,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -162,6 +167,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 6;
 					EventManager.TriggerEvent (new GameplayLevelEvents (6,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -176,6 +182,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 7;
 					EventManager.TriggerEvent (new GameplayLevelEvents (7,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -190,6 +197,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 8;
 					EventManager.TriggerEvent (new GameplayLevelEvents (8,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -204,6 +212,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 9;
 					EventManager.TriggerEvent (new GameplayLevelEvents (9,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -218,6 +227,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 10;
 					EventManager.TriggerEvent (new GameplayLevelEvents (10,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -232,6 +242,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 11;
 					EventManager.TriggerEvent (new GameplayLevelEvents (11,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -246,6 +257,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 12;
 					EventManager.TriggerEvent (new GameplayLevelEvents (12,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -260,6 +272,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 13;
 					EventManager.TriggerEvent (new GameplayLevelEvents (13,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -274,6 +287,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 14;
 					EventManager.TriggerEvent (new GameplayLevelEvents (14,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -288,6 +302,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 15;
 					EventManager.TriggerEvent (new GameplayLevelEvents (15,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -302,6 +317,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 16;
 					EventManager.TriggerEvent (new GameplayLevelEvents (16,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -316,6 +332,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 17;
 					EventManager.TriggerEvent (new GameplayLevelEvents (17,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -330,6 +347,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 18;
 					EventManager.TriggerEvent (new GameplayLevelEvents (18,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -344,6 +362,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 19;
 					EventManager.TriggerEvent (new GameplayLevelEvents (19,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -358,6 +377,7 @@ public class DisplayManager : MonoBehaviour
 					Global.Level = 20;
 					EventManager.TriggerEvent (new GameplayLevelEvents (20,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				}
 				else
 				{
@@ -373,6 +393,7 @@ public class DisplayManager : MonoBehaviour
 			case EMainMenuButton.NEXT:
 				EventManager.TriggerEvent (new NextLevelEvent ());
 				_ListOfDisplay["WinUI"].SetActive(false);
+				EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
 				break;
         }
     }

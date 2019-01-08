@@ -38,3 +38,15 @@ public class RestartLevelEvent : GameEvent
 {
 
 }
+
+public class TimerHandlerEvent :GameEvent
+{
+	public bool IsOn;
+	public float TimeLimit;
+
+	public TimerHandlerEvent(bool isOn, float timeLimit )
+	{
+		IsOn = isOn;
+		TimeLimit = timeLimit;
+	}
+}

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class GameplayManager : MonoBehaviour
     Line activeLine;
     bool IsStart = false;
 	bool CheckLine = false;
+
+	bool StartTimer=false;
+	public GameObject TimerObj;
+	public Image fillImg;
+	float timeAmt = 10;
+	float time;
+	public Text timeText;  
 
     List<GameObject> _LineDrawer = new List<GameObject>();
 
@@ -21,11 +29,12 @@ public class GameplayManager : MonoBehaviour
         EventManager.AddListener<ResultGameplayEvent>(ResultHandler);
 		EventManager.AddListener<NextLevelEvent>(NextLevel);
 		EventManager.AddListener<RestartLevelEvent>(Restart);
+		EventManager.AddListener<TimerHandlerEvent>(Timer);
     }
 
 	private void Start()
 	{
-		
+		//time = timeAmt;
 	}
 
 
@@ -37,6 +46,12 @@ public class GameplayManager : MonoBehaviour
     {
         if (IsStart)
         {
+			if ((time>0)||(StartTimer==true))
+			{
+				time -= Time.deltaTime;
+				fillImg.fillAmount = time / timeAmt; 
+				timeText.text = "Time : "+time.ToString("F");  
+			}	
             if (Input.GetMouseButtonDown(0))
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -83,7 +98,6 @@ public class GameplayManager : MonoBehaviour
             {
                 Vector2 x = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 activeLine.UpdateLine(x);
-				//activeLine.GetComponent<EdgeCollider2D>().enabled=true;
             }
         }
     }
@@ -153,12 +167,34 @@ public class GameplayManager : MonoBehaviour
 		CheckLine = false;
 		Debug.Log ("Next");
 	}
+
 	private void Restart(RestartLevelEvent e)
 	{
 		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 		EventManager.TriggerEvent (new EndGameplayEvent ());
 		IsStart = true;
 		CheckLine = false;
+		//EventManager.TriggerEvent(new InitGameplayEvent());
 		Debug.Log ("Restart");
+	}
+
+	private void Timer(TimerHandlerEvent e)
+	{
+		if (e.IsOn)
+		{
+			//Timer is On, insert amount of time
+			time = e.TimeLimit;	
+			TimerObj.SetActive (true);
+			StartTimer = true;
+			//fillImg.fillAmount =1;
+
+		} 
+		else
+		{
+			//Do Something to make time off
+			time = e.TimeLimit;
+			TimerObj.SetActive (false);
+			StartTimer = false;
+		}
 	}
 }
