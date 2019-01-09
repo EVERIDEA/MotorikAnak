@@ -50,3 +50,12 @@ public class TimerHandlerEvent :GameEvent
 		TimeLimit = timeLimit;
 	}
 }
+
+public class ScoreHandlerEvent : GameEvent
+{
+	public int Value;
+	public ScoreHandlerEvent(int value)
+	{
+		Value = value;
+	}
+}

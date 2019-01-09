@@ -17,7 +17,9 @@ public class GameplayManager : MonoBehaviour
 	public Image fillImg;
 	float timeAmt = 10;
 	float time;
-	public Text timeText;  
+	public Text timeText;
+
+	public Text ScoreText;
 
     List<GameObject> _LineDrawer = new List<GameObject>();
 
@@ -30,6 +32,7 @@ public class GameplayManager : MonoBehaviour
 		EventManager.AddListener<NextLevelEvent>(NextLevel);
 		EventManager.AddListener<RestartLevelEvent>(Restart);
 		EventManager.AddListener<TimerHandlerEvent>(Timer);
+		EventManager.AddListener<ScoreHandlerEvent>(Scoring);
     }
 
 	private void Start()
@@ -52,11 +55,18 @@ public class GameplayManager : MonoBehaviour
 				fillImg.fillAmount = time / timeAmt; 
 				timeText.text = "Time : "+time.ToString("F");  
 			}
-			if (time<=0) 
+			if (time<0) 
 			{
+				time = 0;
+				timeText.text = "Time : 0";
 				EventManager.TriggerEvent (new FailPopUpEvents ("2",true));
 				StartTimer = false;
 				IsStart = false;
+			}
+
+			if (Global.Score<0) 
+			{
+				Global.Score = 0;
 			}
 
             if (Input.GetMouseButtonDown(0))
@@ -125,6 +135,7 @@ public class GameplayManager : MonoBehaviour
         if (e.IsWin)
         {
 			EventManager.TriggerEvent(new MainMenuButtonEvent(EMainMenuButton.WIN));
+			ScoreText.text = "Your Score : " + Global.Score.ToString ();
         }
         else
         {
@@ -138,26 +149,32 @@ public class GameplayManager : MonoBehaviour
 			case EFailType.NotPointTarget:
 				EventManager.TriggerEvent (new FailPopUpEvents ("1", true));
 				IsStart = false;
+				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
             	break;
             case EFailType.Duration:
 				EventManager.TriggerEvent (new FailPopUpEvents ("2", true));
 				IsStart = false;
+				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
                 break;
             case EFailType.HandsUp:
 				EventManager.TriggerEvent (new FailPopUpEvents ("3", true));
 				IsStart = false;
+				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
                 break;
             case EFailType.CrossLine:
 				EventManager.TriggerEvent (new FailPopUpEvents ("4", true));
 				IsStart = false;
+				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
                 break;
             case EFailType.Backward:
 				EventManager.TriggerEvent (new FailPopUpEvents ("5", true));
 				IsStart = false;
+				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
                 break;
             case EFailType.PointEndTarget:
 				EventManager.TriggerEvent (new FailPopUpEvents ("6", true));
 				IsStart = false;
+				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
                 break;
         }
     }
@@ -204,5 +221,10 @@ public class GameplayManager : MonoBehaviour
 			TimerObj.SetActive (false);
 			StartTimer = false;
 		}
+	}
+
+	public void Scoring(ScoreHandlerEvent e)
+	{
+		Global.Score += e.Value;
 	}
 }

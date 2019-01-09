@@ -94,6 +94,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (1,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -109,6 +110,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (2,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -124,6 +126,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (3,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -139,6 +142,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (4,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -154,6 +158,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (5,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -169,6 +174,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (6,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -184,6 +190,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (7,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -199,6 +206,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (8,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -214,6 +222,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (9,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -229,6 +238,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (10,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -244,6 +254,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (11,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -259,6 +270,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (12,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -274,6 +286,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (13,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -289,6 +302,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (14,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -304,6 +318,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (15,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -319,6 +334,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (16,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -334,6 +350,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (17,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -349,6 +366,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (18,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -364,6 +382,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (19,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -379,6 +398,7 @@ public class DisplayManager : MonoBehaviour
 					EventManager.TriggerEvent (new GameplayLevelEvents (20,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+					Global.Score = 10;
 				}
 				else
 				{
@@ -395,6 +415,7 @@ public class DisplayManager : MonoBehaviour
 				EventManager.TriggerEvent (new NextLevelEvent ());
 				_ListOfDisplay["WinUI"].SetActive(false);
 				EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));
+				Global.Score = 10;
 				break;
         }
     }
