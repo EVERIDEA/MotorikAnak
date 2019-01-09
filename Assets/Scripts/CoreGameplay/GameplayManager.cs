@@ -51,7 +51,14 @@ public class GameplayManager : MonoBehaviour
 				time -= Time.deltaTime;
 				fillImg.fillAmount = time / timeAmt; 
 				timeText.text = "Time : "+time.ToString("F");  
-			}	
+			}
+			if (time<=0) 
+			{
+				EventManager.TriggerEvent (new FailPopUpEvents ("2",true));
+				StartTimer = false;
+				IsStart = false;
+			}
+
             if (Input.GetMouseButtonDown(0))
             {
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -109,6 +116,7 @@ public class GameplayManager : MonoBehaviour
         }
 
         _LineDrawer = new List<GameObject>();
+		IsStart = false;
     }
 
     private void ResultHandler(ResultGameplayEvent e)
@@ -174,7 +182,7 @@ public class GameplayManager : MonoBehaviour
 		EventManager.TriggerEvent (new EndGameplayEvent ());
 		IsStart = true;
 		CheckLine = false;
-		//EventManager.TriggerEvent(new InitGameplayEvent());
+		EventManager.TriggerEvent (new TimerHandlerEvent (true, 10f));
 		Debug.Log ("Restart");
 	}
 

@@ -69,6 +69,7 @@ public class DisplayManager : MonoBehaviour
                     EventManager.TriggerEvent(new EndGameplayEvent());
                 }
 				EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
+				EventManager.TriggerEvent (new TimerHandlerEvent (false,1f));
                 break;
 			/*
             case EMainMenuButton.START_GAME:
