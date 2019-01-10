@@ -21,7 +21,11 @@ public class GameplayManager : MonoBehaviour
 
 	public Text ScoreText;
 
+	//GameObject Midpoint;
+
+
     List<GameObject> _LineDrawer = new List<GameObject>();
+
 
     private void Awake()
     {
@@ -38,6 +42,7 @@ public class GameplayManager : MonoBehaviour
 	private void Start()
 	{
 		//time = timeAmt;
+		//Midpoint.GetComponent<ObjectTarget>().Type==EObjectTarget.MID_POINT;
 	}
 
 
@@ -68,6 +73,11 @@ public class GameplayManager : MonoBehaviour
 			{
 				Global.Score = 0;
 			}
+
+//			if (Midpoint.activeInHierarchy==true) 
+//			{
+//				Debug.Log ("Aktif noh");
+//			}
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -186,7 +196,7 @@ public class GameplayManager : MonoBehaviour
 		
 	private void NextLevel(NextLevelEvent e)
 	{
-		if (Global.Level==20) 
+		if (Global.Level==22) 
 		{
 			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 

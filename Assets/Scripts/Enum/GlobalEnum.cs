@@ -12,13 +12,14 @@ public enum EMainMenuButton
 	LEVEL5, LEVEL6, LEVEL7, LEVEL8,
 	LEVEL9, LEVEL10, LEVEL11, LEVEL12,
 	LEVEL13, LEVEL14, LEVEL15, LEVEL16,
-	LEVEL17, LEVEL18, LEVEL19, LEVEL20
+	LEVEL17, LEVEL18, LEVEL19, LEVEL20,
+	LEVEL21, LEVEL22
 }
 
 public enum EFailType
 {
     NotPointTarget, //first time can't take true target
-    Duration, // duration play the game to long
+    Duration, // duration play the game too long
     HandsUp, // hand up when draw the line
     CrossLine, // cross the limit line
     Backward, // point start and then back to start again
