@@ -22,10 +22,11 @@ public enum EFailType
     HandsUp, // hand up when draw the line
     CrossLine, // cross the limit line
     Backward, // point start and then back to start again
-    PointEndTarget // point not 1st object but on the end object
+    PointEndTarget, // point not 1st object but on the end object
+	HitBlocker // hit blocker, had intention to cheat
 }
 
 public enum EObjectTarget
 {
-    START_POINT, END_POINT, OBSTACLE, MID_POINT
+    START_POINT, END_POINT, OBSTACLE, BLOCKER, MID_POINT
 }

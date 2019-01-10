@@ -176,21 +176,42 @@ public class GameplayManager : MonoBehaviour
 				IsStart = false;
 				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
                 break;
+			case EFailType.HitBlocker:
+				EventManager.TriggerEvent (new FailPopUpEvents ("7", true));
+				IsStart = false;
+				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
+				break;
         }
     }
 		
 	private void NextLevel(NextLevelEvent e)
 	{
-		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
+		if (Global.Level==20) 
+		{
+			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 
-		Global.Level += 1;
+			Global.Level = 1;
 
-		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
+			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 
-		EventManager.TriggerEvent (new EndGameplayEvent ());
-		IsStart = true;
-		CheckLine = false;
-		Debug.Log ("Next");
+			EventManager.TriggerEvent (new EndGameplayEvent ());
+			IsStart = true;
+			CheckLine = false;
+		}
+		else 
+		{
+			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
+
+			Global.Level += 1;
+
+			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
+
+			EventManager.TriggerEvent (new EndGameplayEvent ());
+			IsStart = true;
+			CheckLine = false;
+			Debug.Log ("Next");
+		}
+
 	}
 
 	private void Restart(RestartLevelEvent e)

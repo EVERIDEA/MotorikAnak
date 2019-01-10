@@ -52,5 +52,11 @@ public class Line : MonoBehaviour
 			Debug.Log ("HIT OBSTACLE");
 			EventManager.TriggerEvent (new FailHandlerEvent (EFailType.CrossLine));
 		}
+
+		if (c.gameObject.GetComponent<ObjectTarget>().Type == EObjectTarget.BLOCKER) 
+		{
+			Debug.Log ("HIT BLOCKER");
+			EventManager.TriggerEvent (new FailHandlerEvent (EFailType.HitBlocker));
+		}
     }
 }
