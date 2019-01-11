@@ -449,7 +449,7 @@ public class DisplayManager : MonoBehaviour
 				{
 					_ListOfDisplay["Gameplay"].SetActive(true);
 					Global.Level = 22;
-				EventManager.TriggerEvent (new StartLevelEvent ());
+					EventManager.TriggerEvent (new StartLevelEvent ());
 					EventManager.TriggerEvent (new GameplayLevelEvents (22,true));
 					EventManager.TriggerEvent(new InitGameplayEvent());
 					EventManager.TriggerEvent (new TimerHandlerEvent (true,10f));

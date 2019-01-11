@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{9B984190-9352-511E-A16E-14755644A7E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intelesia", "Assembly-CSharp.csproj", "{9B984190-9352-511E-A16E-14755644A7E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{1C59DBD6-61CF-EB2E-FDC7-205A346F6623}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intelesia", "Assembly-CSharp-firstpass.csproj", "{1C59DBD6-61CF-EB2E-FDC7-205A346F6623}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
