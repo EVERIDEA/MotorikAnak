@@ -44,7 +44,15 @@ public class Line : MonoBehaviour
 		if (c.gameObject.GetComponent<ObjectTarget>().Type == EObjectTarget.END_POINT) 
 		{
 			Debug.Log("HIT LINE");
-			EventManager.TriggerEvent(new ResultGameplayEvent(true));
+			if (Global.MidpointCount == false) 
+			{
+				EventManager.TriggerEvent (new ResultGameplayEvent (true));
+			}
+			if (Global.MidpointCount == true) 
+			{
+				Debug.Log ("MIDPOINT SKIPPED");
+				EventManager.TriggerEvent (new FailHandlerEvent (EFailType.MidpointSkipped));
+			}
 		}
 
 		if (c.gameObject.GetComponent<ObjectTarget> ().Type == EObjectTarget.OBSTACLE) 
@@ -57,6 +65,12 @@ public class Line : MonoBehaviour
 		{
 			Debug.Log ("HIT BLOCKER");
 			EventManager.TriggerEvent (new FailHandlerEvent (EFailType.HitBlocker));
+		}
+
+		if (c.gameObject.GetComponent<ObjectTarget>().Type == EObjectTarget.MID_POINT) 
+		{
+			Debug.Log ("HIT MIDPOINT");
+			EventManager.TriggerEvent (new MidPointHandlerEvent (false,c.gameObject));
 		}
     }
 }

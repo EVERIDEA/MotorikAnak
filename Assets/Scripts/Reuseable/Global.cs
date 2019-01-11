@@ -9,4 +9,5 @@ public static class Global
 {
     public static int Level = 1;
 	public static int Score;
+	public static bool MidpointCount=false;
 }

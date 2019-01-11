@@ -21,7 +21,7 @@ public class GameplayManager : MonoBehaviour
 
 	public Text ScoreText;
 
-	//GameObject Midpoint;
+	public List <MidpointBehaviour> _Midpoint = new List<MidpointBehaviour>();
 
 
     List<GameObject> _LineDrawer = new List<GameObject>();
@@ -37,6 +37,7 @@ public class GameplayManager : MonoBehaviour
 		EventManager.AddListener<RestartLevelEvent>(Restart);
 		EventManager.AddListener<TimerHandlerEvent>(Timer);
 		EventManager.AddListener<ScoreHandlerEvent>(Scoring);
+		EventManager.AddListener<MidPointHandlerEvent>(Crossed);
     }
 
 	private void Start()
@@ -126,6 +127,20 @@ public class GameplayManager : MonoBehaviour
                 Vector2 x = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 activeLine.UpdateLine(x);
             }
+
+			if (_Midpoint.Count != 0) 
+			{
+				Global.MidpointCount = true;
+				//ada isinya
+			}
+
+			if(_Midpoint.Count == 0)
+			{
+				Global.MidpointCount = false;
+				//kosong
+			}
+
+
         }
     }
 
@@ -137,6 +152,7 @@ public class GameplayManager : MonoBehaviour
 
         _LineDrawer = new List<GameObject>();
 		IsStart = false;
+		_Midpoint.Clear ();
     }
 
     private void ResultHandler(ResultGameplayEvent e)
@@ -191,6 +207,12 @@ public class GameplayManager : MonoBehaviour
 				IsStart = false;
 				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
 				break;
+			case EFailType.MidpointSkipped:
+				EventManager.TriggerEvent (new FailPopUpEvents ("8", true));
+				IsStart = false;
+				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
+				break;
+
         }
     }
 		
@@ -207,6 +229,7 @@ public class GameplayManager : MonoBehaviour
 			EventManager.TriggerEvent (new EndGameplayEvent ());
 			IsStart = true;
 			CheckLine = false;
+			Debug.Log ("Hit the last level, Level will be looped");
 		}
 		else 
 		{
@@ -226,8 +249,9 @@ public class GameplayManager : MonoBehaviour
 
 	private void Restart(RestartLevelEvent e)
 	{
-		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
+		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 		EventManager.TriggerEvent (new EndGameplayEvent ());
+		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 		IsStart = true;
 		CheckLine = false;
 		EventManager.TriggerEvent (new TimerHandlerEvent (true, 10f));
@@ -257,5 +281,17 @@ public class GameplayManager : MonoBehaviour
 	public void Scoring(ScoreHandlerEvent e)
 	{
 		Global.Score += e.Value;
+	}
+
+	public void Crossed(MidPointHandlerEvent e)
+	{
+		if (e.IsCrossed) 
+		{
+			_Midpoint.Add (e.Midpoint.GetComponent<MidpointBehaviour>());
+		} 
+		else 
+		{
+			_Midpoint.Remove (e.Midpoint.GetComponent<MidpointBehaviour>());
+		}
 	}
 }

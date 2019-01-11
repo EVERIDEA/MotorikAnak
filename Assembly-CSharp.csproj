@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\CoreGameplay\DisplayManager.cs" />
      <Compile Include="Assets\Scripts\CoreGameplay\GameplayManager.cs" />
      <Compile Include="Assets\Scripts\CoreGameplay\Line.cs" />
+     <Compile Include="Assets\Scripts\CoreGameplay\MidpointBehaviour.cs" />
      <Compile Include="Assets\Scripts\CoreGameplay\ObjectTarget.cs" />
      <Compile Include="Assets\Scripts\Enum\GlobalEnum.cs" />
      <Compile Include="Assets\Scripts\Events\GameplayEvents.cs" />

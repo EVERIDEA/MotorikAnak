@@ -59,3 +59,14 @@ public class ScoreHandlerEvent : GameEvent
 		Value = value;
 	}
 }
+
+public class MidPointHandlerEvent : GameEvent
+{
+	public bool IsCrossed;
+	public GameObject Midpoint;
+	public MidPointHandlerEvent(bool isCrossed, GameObject midpoint)
+	{
+		IsCrossed = isCrossed;
+		Midpoint = midpoint;
+	}
+}
