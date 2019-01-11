@@ -29,6 +29,16 @@ public class FailHandlerEvent : GameEvent
     }
 }
 
+public class DisableAllPopupEvents:GameEvent
+{
+	
+}
+
+public class StartLevelEvent:GameEvent
+{
+	
+}
+
 public class NextLevelEvent : GameEvent
 {
 	

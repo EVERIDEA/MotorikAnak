@@ -18,6 +18,7 @@ public class GameplayUIManager : MonoBehaviour {
     private void Awake()
     {
         EventManager.AddListener<FailPopUpEvents>(FailPopUpListener);
+		EventManager.AddListener<DisableAllPopupEvents>(DisableAllPopUp);
 
         for (int i = 0; i < _FailPopUp.Length; i++) 
 		{
@@ -28,10 +29,7 @@ public class GameplayUIManager : MonoBehaviour {
 		{
 			popup.ObjectUI.AddComponent<Button>().onClick.AddListener(delegate
 				{
-					for (int i = 0; i < _FailPopUp.Length; i++) 
-					{
-						_FailPopUp[i].ObjectUI.SetActive (false);
-					}
+					Disabler ();
 					EventManager.TriggerEvent (new RestartLevelEvent ());
 				});
 		}
@@ -42,4 +40,17 @@ public class GameplayUIManager : MonoBehaviour {
         //DO SOME ACTION OF UI OBJECTS
         _FailPopUpData[e.Id].SetActive(e.IsActive);
     }
+
+	private void DisableAllPopUp(DisableAllPopupEvents e)
+	{
+		Disabler ();
+	}
+
+	private void Disabler()
+	{
+		for (int i = 0; i < _FailPopUp.Length; i++) 
+		{
+			_FailPopUp[i].ObjectUI.SetActive (false);
+		}
+	}
 }

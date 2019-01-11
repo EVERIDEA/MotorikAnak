@@ -38,12 +38,12 @@ public class GameplayManager : MonoBehaviour
 		EventManager.AddListener<TimerHandlerEvent>(Timer);
 		EventManager.AddListener<ScoreHandlerEvent>(Scoring);
 		EventManager.AddListener<MidPointHandlerEvent>(Crossed);
+		EventManager.AddListener<StartLevelEvent>(StartLevel);
     }
 
 	private void Start()
 	{
-		//time = timeAmt;
-		//Midpoint.GetComponent<ObjectTarget>().Type==EObjectTarget.MID_POINT;
+
 	}
 
 
@@ -245,6 +245,17 @@ public class GameplayManager : MonoBehaviour
 			Debug.Log ("Next");
 		}
 
+	}
+
+	private void StartLevel(StartLevelEvent e)
+	{
+		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
+		EventManager.TriggerEvent (new EndGameplayEvent ());
+		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
+		EventManager.TriggerEvent (new DisableAllPopupEvents ());
+		IsStart = true;
+		CheckLine = false;
+		Debug.Log ("Start Level");
 	}
 
 	private void Restart(RestartLevelEvent e)
