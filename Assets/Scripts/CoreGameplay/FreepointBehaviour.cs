@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MidpointBehaviour : MonoBehaviour
+public class FreepointBehaviour : MonoBehaviour
 {
-	public bool Crossed;
+    public bool Crossed;
 }

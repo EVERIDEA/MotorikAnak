@@ -259,7 +259,9 @@
     <Compile Include="Assets\Scripts\ButtonManager\MainMenuButton.cs" />
     <Compile Include="Assets\Scripts\ButtonManager\PauseButton.cs" />
     <Compile Include="Assets\Scripts\CoreGameplay\DisplayManager.cs" />
+    <Compile Include="Assets\Scripts\CoreGameplay\FreepointBehaviour.cs" />
     <Compile Include="Assets\Scripts\CoreGameplay\GameplayManager.cs" />
+    <Compile Include="Assets\Scripts\CoreGameplay\LevelManager.cs" />
     <Compile Include="Assets\Scripts\CoreGameplay\Line.cs" />
     <Compile Include="Assets\Scripts\CoreGameplay\MidpointBehaviour.cs" />
     <Compile Include="Assets\Scripts\CoreGameplay\ObjectTarget.cs" />

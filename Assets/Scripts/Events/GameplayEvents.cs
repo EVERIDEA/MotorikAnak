@@ -80,3 +80,24 @@ public class MidPointHandlerEvent : GameEvent
 		Midpoint = midpoint;
 	}
 }
+
+public class GameplayTypeHandlerEvent : GameEvent
+{
+    public GameplayType Type;
+
+    public GameplayTypeHandlerEvent(GameplayType type)
+    {
+        Type = type;
+    }
+}
+
+public class FreePointHandlerEvent : GameEvent
+{
+    public bool IsCrossed;
+    public GameObject Freepoint;
+    public FreePointHandlerEvent(bool isCrossed, GameObject freepoint)
+    {
+        IsCrossed = isCrossed;
+        Freepoint = freepoint;
+    }
+}

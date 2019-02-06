@@ -460,6 +460,40 @@ public class DisplayManager : MonoBehaviour
 					_ListOfDisplay["MainMenu"].SetActive(true);
 				}
 				break;
+            case EMainMenuButton.LEVEL23:
+                _ListOfDisplay["LevelSelect"].SetActive(false);
+                if (e.IsActive)
+                {
+                    _ListOfDisplay["Gameplay"].SetActive(true);
+                    Global.Level = 23;
+                    EventManager.TriggerEvent(new StartLevelEvent());
+                    EventManager.TriggerEvent(new GameplayLevelEvents(23, true));
+                    EventManager.TriggerEvent(new InitGameplayEvent());
+                    EventManager.TriggerEvent(new TimerHandlerEvent(true, 10f));
+                    Global.Score = 10;
+                }
+                else
+                {
+                    _ListOfDisplay["MainMenu"].SetActive(true);
+                }
+                break;
+            case EMainMenuButton.LEVEL24:
+                _ListOfDisplay["LevelSelect"].SetActive(false);
+                if (e.IsActive)
+                {
+                    _ListOfDisplay["Gameplay"].SetActive(true);
+                    Global.Level = 24;
+                    EventManager.TriggerEvent(new StartLevelEvent());
+                    EventManager.TriggerEvent(new GameplayLevelEvents(24, true));
+                    EventManager.TriggerEvent(new InitGameplayEvent());
+                    EventManager.TriggerEvent(new TimerHandlerEvent(true, 10f));
+                    Global.Score = 10;
+                }
+                else
+                {
+                    _ListOfDisplay["MainMenu"].SetActive(true);
+                }
+                break;
             case EMainMenuButton.WIN:
                 _ListOfDisplay["WinUI"].SetActive(true);
                 break;

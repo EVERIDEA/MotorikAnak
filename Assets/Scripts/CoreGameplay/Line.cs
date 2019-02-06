@@ -72,5 +72,11 @@ public class Line : MonoBehaviour
 			Debug.Log ("HIT MIDPOINT");
 			EventManager.TriggerEvent (new MidPointHandlerEvent (false,c.gameObject));
 		}
+
+        if (c.gameObject.GetComponent<ObjectTarget>().Type == EObjectTarget.FREE_POINT)
+        {
+            Debug.Log("HIT FREEPOINT");
+            EventManager.TriggerEvent(new FreePointHandlerEvent(false, c.gameObject));
+        }
     }
 }
