@@ -10,9 +10,13 @@ public class LevelManager : MonoBehaviour
         {
             EventManager.TriggerEvent(new GameplayTypeHandlerEvent(GameplayType.LINE_DRAW_MECHANIC));
         }
-        if (Global.Level>22)
+        if (Global.Level==23)
         {
             EventManager.TriggerEvent(new GameplayTypeHandlerEvent(GameplayType.FIND_SHAPE_MECHANIC));
+        }
+        if (Global.Level==24)
+        {
+            EventManager.TriggerEvent(new GameplayTypeHandlerEvent(GameplayType.FIND_SHAPE_MECHANIC2));
         }
 	}
 }

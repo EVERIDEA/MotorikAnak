@@ -32,6 +32,7 @@ public class GameplayManager : MonoBehaviour
 
     private Vector3 firstNode;
 
+    public GameObject pointGroup;
 
     private void Awake()
     {
@@ -217,8 +218,6 @@ public class GameplayManager : MonoBehaviour
                     {
                         EventManager.TriggerEvent(new ResultGameplayEvent(true));
                         activeLine.UpdateLine(firstNode);
-                        //EventManager.TriggerEvent(new FreePointHandlerEvent(true,firstNode));
-                        //firstNode.AddComponent<FreepointBehaviour>();
                     }
                 }
 
@@ -234,6 +233,97 @@ public class GameplayManager : MonoBehaviour
                     //No Freepoint
                 }
             }
+        }
+
+        if (SelectedGameType == "Find Shape2")
+        {
+            if (IsStart)
+            {
+                if ((time > 0) || (StartTimer == true))
+                {
+                    time -= Time.deltaTime;
+                    fillImg.fillAmount = time / timeAmt;
+                    timeText.text = "Time : " + time.ToString("F");
+                }
+                if (time < 0)
+                {
+                    time = 0;
+                    timeText.text = "Time : 0";
+                    EventManager.TriggerEvent(new FailPopUpEvents("2", true));
+                    StartTimer = false;
+                    IsStart = false;
+                }
+
+                if (Global.Score < 0)
+                {
+                    Global.Score = 0;
+                }
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+                    Debug.Log(mousePos);
+                    RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+                    if (hit.transform == null)
+                        return;
+                    if (hit.transform.gameObject.name == "Point")
+                    {
+                        Debug.Log("A");
+                        firstNode = mousePos;
+                        CheckLine = true;
+                    }
+                    else
+                    {
+                        //EventManager.TriggerEvent(new FailHandlerEvent(EFailType.NotPointTarget));
+                        return; //Fail
+                    }
+
+                    GameObject lineGo = Instantiate(linePrefab);
+                    _LineDrawer.Add(lineGo);
+
+                    activeLine = lineGo.GetComponent<Line>();
+                    lineGo.transform.parent = this.gameObject.transform;
+                }
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    activeLine = null;
+                    if (CheckLine == true)
+                    {
+                        EventManager.TriggerEvent(new FailHandlerEvent(EFailType.HandsUp));
+                        CheckLine = false;
+                    }
+                }
+
+                /*
+                 * Take mouse position and feed it to updateline
+                 */
+                if (activeLine != null)
+                {
+                    Vector2 x = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    activeLine.UpdateLine(x);
+                    if (Global.FreepointCount == false)
+                    {
+                        //EventManager.TriggerEvent(new ResultGameplayEvent(true));
+                        activeLine.UpdateLine(firstNode);
+                        pointGroup.SetActive(true);
+                    }
+                }
+
+                if (_Freepoint.Count != 0)
+                {
+                    Global.FreepointCount = true;
+                    //There Is Freepoint
+                }
+
+                if (_Freepoint.Count == 0)
+                {
+                    Global.FreepointCount = false;
+                    //No Freepoint
+                }
+            }
+
         }
 
         if (SelectedGameType == "Find The Difference")
@@ -338,7 +428,7 @@ public class GameplayManager : MonoBehaviour
 		
 	private void NextLevel(NextLevelEvent e)
 	{
-		if (Global.Level==23) 
+		if (Global.Level==24) 
 		{
 			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 
@@ -360,7 +450,6 @@ public class GameplayManager : MonoBehaviour
 
 			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 
-
 			EventManager.TriggerEvent (new EndGameplayEvent ());
             //IsStart = true;
             //CheckLine = false;
@@ -374,25 +463,31 @@ public class GameplayManager : MonoBehaviour
 	{
 		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 		EventManager.TriggerEvent (new EndGameplayEvent ());
-		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
+        _Midpoint.Clear();
+        _Freepoint.Clear();
+        EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 		EventManager.TriggerEvent (new DisableAllPopupEvents ());
 		IsStart = true;
 		CheckLine = false;
         Global.MidpointCount = false;
         Global.FreepointCount = false;
-		Debug.Log ("Start Level");
+        pointGroup.SetActive(false);
+        Debug.Log ("Start Level");
 	}
 
 	private void Restart(RestartLevelEvent e)
 	{
 		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 		EventManager.TriggerEvent (new EndGameplayEvent ());
-		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
+        _Midpoint.Clear();
+        _Freepoint.Clear();
+        EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 		IsStart = true;
 		CheckLine = false;
         Global.MidpointCount = false;
         Global.FreepointCount = false;
         EventManager.TriggerEvent (new TimerHandlerEvent (true, 10f));
+        pointGroup.SetActive(false);
 		Debug.Log ("Restart");
 	}
 
@@ -442,6 +537,9 @@ public class GameplayManager : MonoBehaviour
                 break;
             case GameplayType.FIND_SHAPE_MECHANIC:
                 SelectedGameType = "Find Shape";
+                break;
+            case GameplayType.FIND_SHAPE_MECHANIC2:
+                SelectedGameType = "Find Shape2";
                 break;
             case GameplayType.FIND_THE_DIFFERENCE_MECHANIC:
                 SelectedGameType = "Find The Difference";

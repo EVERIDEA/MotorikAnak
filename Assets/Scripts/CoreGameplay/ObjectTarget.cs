@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectTarget : MonoBehaviour {
     public EObjectTarget Type;
-	// Use this for initialization
+
 	public void OnEnable()
 	{
 		if (this.GetComponent<ObjectTarget>().Type==EObjectTarget.MID_POINT) 
@@ -19,4 +19,5 @@ public class ObjectTarget : MonoBehaviour {
             EventManager.TriggerEvent(new FreePointHandlerEvent(true,this.gameObject));
         }
 	}
+
 }
