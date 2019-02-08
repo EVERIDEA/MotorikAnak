@@ -34,6 +34,13 @@ public class GameplayManager : MonoBehaviour
 
     public GameObject pointGroup;
 
+    private bool shapeCompleted=false;
+
+    public SpriteRenderer ChangeShape;
+
+    public Sprite FirstShape;
+    public Sprite SecondShape;
+
     private void Awake()
     {
         EventManager.AddListener<InitGameplayEvent>(InitListener);
@@ -48,6 +55,7 @@ public class GameplayManager : MonoBehaviour
 		EventManager.AddListener<StartLevelEvent>(StartLevel);
         EventManager.AddListener<GameplayTypeHandlerEvent>(GameplayTypeListener);
         EventManager.AddListener<FreePointHandlerEvent>(CrossedFreepoint);
+        EventManager.AddListener<ResumeHandlerEvent>(Resume);
     }
 
 	private void Start()
@@ -305,9 +313,18 @@ public class GameplayManager : MonoBehaviour
                     activeLine.UpdateLine(x);
                     if (Global.FreepointCount == false)
                     {
-                        //EventManager.TriggerEvent(new ResultGameplayEvent(true));
-                        activeLine.UpdateLine(firstNode);
-                        pointGroup.SetActive(true);
+                        if (shapeCompleted==true)
+                        {
+                            EventManager.TriggerEvent(new ResultGameplayEvent(true));
+                        }
+                        else
+                        {
+                            activeLine.UpdateLine(firstNode);
+                            pointGroup.SetActive(true);
+                            EventManager.TriggerEvent(new FailHandlerEvent(EFailType.FreepointCompleted));
+                            ChangeShape.sprite = SecondShape;
+                            shapeCompleted = true;
+                        }
                     }
                 }
 
@@ -422,7 +439,10 @@ public class GameplayManager : MonoBehaviour
 				IsStart = false;
 				EventManager.TriggerEvent (new ScoreHandlerEvent (-1));
 				break;
-
+            case EFailType.FreepointCompleted:
+                EventManager.TriggerEvent (new FailPopUpEvents("9", true));
+                IsStart = false;
+                break;
         }
     }
 		
@@ -464,6 +484,7 @@ public class GameplayManager : MonoBehaviour
 		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 		EventManager.TriggerEvent (new EndGameplayEvent ());
         _Midpoint.Clear();
+        pointGroup.SetActive(false);
         _Freepoint.Clear();
         EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 		EventManager.TriggerEvent (new DisableAllPopupEvents ());
@@ -471,7 +492,8 @@ public class GameplayManager : MonoBehaviour
 		CheckLine = false;
         Global.MidpointCount = false;
         Global.FreepointCount = false;
-        pointGroup.SetActive(false);
+        shapeCompleted = false;
+        ChangeShape.sprite = FirstShape;
         Debug.Log ("Start Level");
 	}
 
@@ -480,6 +502,7 @@ public class GameplayManager : MonoBehaviour
 		EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 		EventManager.TriggerEvent (new EndGameplayEvent ());
         _Midpoint.Clear();
+        pointGroup.SetActive(false);
         _Freepoint.Clear();
         EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 		IsStart = true;
@@ -487,8 +510,9 @@ public class GameplayManager : MonoBehaviour
         Global.MidpointCount = false;
         Global.FreepointCount = false;
         EventManager.TriggerEvent (new TimerHandlerEvent (true, 10f));
-        pointGroup.SetActive(false);
-		Debug.Log ("Restart");
+        shapeCompleted = false;
+        ChangeShape.sprite = FirstShape;
+        Debug.Log ("Restart");
 	}
 
 	private void Timer(TimerHandlerEvent e)
@@ -560,5 +584,11 @@ public class GameplayManager : MonoBehaviour
         {
             _Freepoint.Remove(e.Freepoint.GetComponent<FreepointBehaviour>());
         }
+    }
+
+    private void Resume(ResumeHandlerEvent e)
+    {
+        IsStart = true;
+        CheckLine = false;
     }
 }

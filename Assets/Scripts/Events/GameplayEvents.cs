@@ -101,3 +101,8 @@ public class FreePointHandlerEvent : GameEvent
         Freepoint = freepoint;
     }
 }
+
+public class ResumeHandlerEvent : GameEvent
+{
+
+}

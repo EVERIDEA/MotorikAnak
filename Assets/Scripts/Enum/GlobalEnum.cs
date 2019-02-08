@@ -25,7 +25,8 @@ public enum EFailType
     Backward, // point start and then back to start again
     PointEndTarget, // point not 1st object but on the end object
 	HitBlocker, // hit blocker, had intention to cheat
-	MidpointSkipped // Midpoint object not crossed
+	MidpointSkipped, // Midpoint object not crossed
+    FreepointCompleted //Freepoint completed
 }
 
 public enum EObjectTarget

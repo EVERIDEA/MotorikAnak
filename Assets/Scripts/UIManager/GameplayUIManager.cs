@@ -30,7 +30,18 @@ public class GameplayUIManager : MonoBehaviour {
 			popup.ObjectUI.AddComponent<Button>().onClick.AddListener(delegate
 				{
 					Disabler ();
-					EventManager.TriggerEvent (new RestartLevelEvent ());
+					
+                    if (popup.Id=="9")
+                    {
+                        Debug.Log("Reset The Time And Resume Game");
+                        EventManager.TriggerEvent(new ResumeHandlerEvent());
+                        EventManager.TriggerEvent(new TimerHandlerEvent(true, 10f));
+
+                    }
+                    else
+                    {
+                        EventManager.TriggerEvent(new RestartLevelEvent());
+                    }
 				});
 		}
     }

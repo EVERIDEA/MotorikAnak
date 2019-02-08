@@ -9,15 +9,37 @@ public class ObjectTarget : MonoBehaviour {
 	{
 		if (this.GetComponent<ObjectTarget>().Type==EObjectTarget.MID_POINT) 
 		{
-			this.gameObject.AddComponent<MidpointBehaviour>();
-			EventManager.TriggerEvent (new MidPointHandlerEvent (true,this.gameObject));
-		}
+            if (this.gameObject.GetComponent<MidpointBehaviour>()==null)
+            {
+                this.gameObject.AddComponent<MidpointBehaviour>();
+            }
+
+            EventManager.TriggerEvent(new MidPointHandlerEvent(true, this.gameObject));
+        }
 
         if (this.GetComponent<ObjectTarget>().Type==EObjectTarget.FREE_POINT)
         {
-            this.gameObject.AddComponent<FreepointBehaviour>();
-            EventManager.TriggerEvent(new FreePointHandlerEvent(true,this.gameObject));
+            if (this.gameObject.GetComponent<FreepointBehaviour>()==null)
+            {
+                this.gameObject.AddComponent<FreepointBehaviour>();
+            }
+
+            EventManager.TriggerEvent(new FreePointHandlerEvent(true, this.gameObject));
         }
 	}
 
+    /*
+    public void OnDisable()
+    {
+        if (this.GetComponent<ObjectTarget>().Type == EObjectTarget.MID_POINT)
+        {
+            Destroy(this.gameObject.GetComponent<MidpointBehaviour>());
+        }
+
+        if (this.GetComponent<ObjectTarget>().Type == EObjectTarget.FREE_POINT)
+        {
+            Destroy(this.gameObject.GetComponent<FreepointBehaviour>());
+        }
+    }
+    */
 }
