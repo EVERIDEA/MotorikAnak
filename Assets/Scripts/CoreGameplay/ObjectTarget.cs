@@ -26,6 +26,16 @@ public class ObjectTarget : MonoBehaviour {
 
             EventManager.TriggerEvent(new FreePointHandlerEvent(true, this.gameObject));
         }
+
+		if (this.GetComponent<ObjectTarget>().Type==EObjectTarget.CROSS_POINT)
+		{
+			if (this.gameObject.GetComponent<CrosspointBehaviour>()==null)
+			{
+				this.gameObject.AddComponent<CrosspointBehaviour>();
+			}
+
+			//EventManager.TriggerEvent(new FreePointHandlerEvent(true, this.gameObject));
+		}
 	}
 
     /*

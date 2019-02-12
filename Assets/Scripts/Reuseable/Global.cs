@@ -11,4 +11,5 @@ public static class Global
 	public static int Score;
 	public static bool MidpointCount = false;
     public static bool FreepointCount = false;
+	public static int CrossLine = 0;
 }

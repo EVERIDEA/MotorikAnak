@@ -494,9 +494,60 @@ public class DisplayManager : MonoBehaviour
                     _ListOfDisplay["MainMenu"].SetActive(true);
                 }
                 break;
-            case EMainMenuButton.WIN:
-                _ListOfDisplay["WinUI"].SetActive(true);
-                break;
+			case EMainMenuButton.LEVEL25:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if (e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 25;
+					EventManager.TriggerEvent(new StartLevelEvent());
+					EventManager.TriggerEvent(new GameplayLevelEvents(25, true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent(new TimerHandlerEvent(true, 10f));
+					Global.Score = 10;
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL26:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if (e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 26;
+					EventManager.TriggerEvent(new StartLevelEvent());
+					EventManager.TriggerEvent(new GameplayLevelEvents(26, true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent(new TimerHandlerEvent(true, 10f));
+					Global.Score = 10;
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.LEVEL27:
+				_ListOfDisplay["LevelSelect"].SetActive(false);
+				if (e.IsActive)
+				{
+					_ListOfDisplay["Gameplay"].SetActive(true);
+					Global.Level = 27;
+					EventManager.TriggerEvent(new StartLevelEvent());
+					EventManager.TriggerEvent(new GameplayLevelEvents(27, true));
+					EventManager.TriggerEvent(new InitGameplayEvent());
+					EventManager.TriggerEvent(new TimerHandlerEvent(true, 10f));
+					Global.Score = 10;
+				}
+				else
+				{
+					_ListOfDisplay["MainMenu"].SetActive(true);
+				}
+				break;
+			case EMainMenuButton.WIN:
+				_ListOfDisplay["WinUI"].SetActive(true);
+				break;
             case EMainMenuButton.FAIL:
                 _ListOfDisplay["FailUI"].SetActive(true);
                 break;

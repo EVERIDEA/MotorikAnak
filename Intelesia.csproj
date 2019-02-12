@@ -258,6 +258,7 @@
     <Compile Include="Assets\Scripts\ButtonManager\LevelSelectMenuButton.cs" />
     <Compile Include="Assets\Scripts\ButtonManager\MainMenuButton.cs" />
     <Compile Include="Assets\Scripts\ButtonManager\PauseButton.cs" />
+    <Compile Include="Assets\Scripts\CoreGameplay\CrosspointBehaviour.cs" />
     <Compile Include="Assets\Scripts\CoreGameplay\DisplayManager.cs" />
     <Compile Include="Assets\Scripts\CoreGameplay\FreepointBehaviour.cs" />
     <Compile Include="Assets\Scripts\CoreGameplay\GameplayManager.cs" />

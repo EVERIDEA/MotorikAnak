@@ -343,29 +343,167 @@ public class GameplayManager : MonoBehaviour
 
         }
 
-        if (SelectedGameType == "Find The Difference")
-        {
-            if (IsStart)
-            {
-                //Do Something
-            }
+		if (SelectedGameType == "Find The Difference") {
+			if (IsStart) {
+				{
+					if ((time > 0) || (StartTimer == true)) {
+						time -= Time.deltaTime;
+						fillImg.fillAmount = time / timeAmt;
+						timeText.text = "Time : " + time.ToString ("F");
+					}
+					if (time < 0) {
+						time = 0;
+						timeText.text = "Time : 0";
+						EventManager.TriggerEvent (new FailPopUpEvents ("2", true));
+						StartTimer = false;
+						IsStart = false;
+					}
 
-        }
+					if (Global.Score < 0) {
+						Global.Score = 0;
+					}
 
-        if (SelectedGameType == "Find The Difference")
-        {
-            if (IsStart)
-            {
-                //Do Something
-            }
-        }
+					if (Input.GetMouseButtonDown (0)) {
+						Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+						Vector2 mousePos2D = new Vector2 (mousePos.x, mousePos.y);
+						Debug.Log (mousePos);
+						RaycastHit2D hit = Physics2D.Raycast (mousePos2D, Vector2.zero);
+						if (hit.transform == null)
+							return;
+						if (hit.transform.gameObject != null) {
+							Debug.Log ("A");
+							CheckLine = true;
+						} else {
+							EventManager.TriggerEvent (new FailHandlerEvent (EFailType.NotPointTarget));
+							return; //Fail
+						}
+
+						GameObject lineGo = Instantiate (linePrefab);
+						_LineDrawer.Add (lineGo);
+
+						activeLine = lineGo.GetComponent<Line> ();
+						lineGo.transform.parent = this.gameObject.transform;
+					}
+
+					if (Input.GetMouseButtonUp (0)) {
+						activeLine = null;
+						//if (CheckLine == true)
+						//{
+						//	EventManager.TriggerEvent(new FailHandlerEvent(EFailType.HandsUp));
+						//	CheckLine = false;
+						//}
+					}
+
+					/*
+                 * Take mouse position and feed it to updateline
+                 */
+					if (activeLine != null) {
+						Vector2 x = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+						activeLine.UpdateLine (x);
+					}
+
+					if (_Midpoint.Count != 0) {
+						Global.MidpointCount = true;
+						//ada isinya
+					}
+
+					if (_Midpoint.Count == 0) {
+						Global.MidpointCount = false;
+						//kosong
+					}
+
+				}
+			}
+
+		}
 
         if (SelectedGameType == "Line Draw No Start End")
         {
-            if (IsStart)
-            {
-                //Do Something
-            }
+			if (IsStart)
+			{
+				if ((time > 0) || (StartTimer == true))
+				{
+					time -= Time.deltaTime;
+					fillImg.fillAmount = time / timeAmt;
+					timeText.text = "Time : " + time.ToString("F");
+				}
+				if (time < 0)
+				{
+					time = 0;
+					timeText.text = "Time : 0";
+					EventManager.TriggerEvent(new FailPopUpEvents("2", true));
+					StartTimer = false;
+					IsStart = false;
+				}
+
+				if (Global.Score < 0)
+				{
+					Global.Score = 0;
+				}
+
+				if (Input.GetMouseButtonDown(0))
+				{
+					Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+					Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+					Debug.Log(mousePos);
+					RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+					if (hit.transform == null)
+						return;
+					if (hit.transform.gameObject.name == "Dot")
+					{
+						Debug.Log("A");
+						//firstNode = mousePos;
+						CheckLine = true;
+					}
+					else
+					{
+						//EventManager.TriggerEvent(new FailHandlerEvent(EFailType.NotPointTarget));
+						return; //Fail
+					}
+
+					GameObject lineGo = Instantiate(linePrefab);
+					_LineDrawer.Add(lineGo);
+
+					activeLine = lineGo.GetComponent<Line>();
+					lineGo.transform.parent = this.gameObject.transform;
+				}
+
+				if (Input.GetMouseButtonUp(0))
+				{
+					activeLine = null;
+					if (CheckLine == true)
+					{
+						EventManager.TriggerEvent(new FailHandlerEvent(EFailType.HandsUp));
+						CheckLine = false;
+					}
+				}
+
+				/*
+                 * Take mouse position and feed it to updateline
+                 */
+				if (activeLine != null)
+				{
+					Vector2 x = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+					activeLine.UpdateLine(x);
+					if (Global.FreepointCount == false)
+					{
+						EventManager.TriggerEvent(new ResultGameplayEvent(true));
+						//activeLine.UpdateLine(firstNode);
+					}
+				}
+
+				if (_Freepoint.Count != 0)
+				{
+					Global.FreepointCount = true;
+					//There Is Freepoint
+				}
+
+				if (_Freepoint.Count == 0)
+				{
+					Global.FreepointCount = false;
+					//No Freepoint
+				}
+			}
         }
        
     }
@@ -443,16 +581,21 @@ public class GameplayManager : MonoBehaviour
                 EventManager.TriggerEvent (new FailPopUpEvents("9", true));
                 IsStart = false;
                 break;
+			case EFailType.WrongAnswer:
+				EventManager.TriggerEvent (new FailPopUpEvents("10", true));
+				IsStart = false;
+				break;
         }
     }
 		
 	private void NextLevel(NextLevelEvent e)
 	{
-		if (Global.Level==24) 
+		if (Global.Level==27) 
 		{
 			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 
 			Global.Level = 1;
+			Global.CrossLine = 0;
 
 			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 
@@ -467,6 +610,7 @@ public class GameplayManager : MonoBehaviour
 			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,false));
 
 			Global.Level += 1;
+			Global.CrossLine = 0;
 
 			EventManager.TriggerEvent (new GameplayLevelEvents (Global.Level,true));
 
@@ -494,6 +638,7 @@ public class GameplayManager : MonoBehaviour
         Global.FreepointCount = false;
         shapeCompleted = false;
         ChangeShape.sprite = FirstShape;
+		Global.CrossLine = 0;
         Debug.Log ("Start Level");
 	}
 
@@ -512,6 +657,7 @@ public class GameplayManager : MonoBehaviour
         EventManager.TriggerEvent (new TimerHandlerEvent (true, 10f));
         shapeCompleted = false;
         ChangeShape.sprite = FirstShape;
+		Global.CrossLine = 0;
         Debug.Log ("Restart");
 	}
 

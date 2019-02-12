@@ -78,5 +78,23 @@ public class Line : MonoBehaviour
             Debug.Log("HIT FREEPOINT");
             EventManager.TriggerEvent(new FreePointHandlerEvent(false, c.gameObject));
         }
+
+		if (c.gameObject.GetComponent<ObjectTarget>().Type == EObjectTarget.CROSS_POINT)
+		{
+			Debug.Log("HIT CROSSPOINT");
+			Global.CrossLine += 1;
+			if ((Global.CrossLine>1)&&(c.gameObject.name=="Shape4")) 
+			{
+				Debug.Log ("This IS IT");
+				EventManager.TriggerEvent (new ResultGameplayEvent (true));
+			}
+			if ((Global.CrossLine>1)&&(c.gameObject.name!="Shape4")) 
+			{
+				Debug.Log ("Wrong");
+				EventManager.TriggerEvent (new FailHandlerEvent (EFailType.WrongAnswer));
+			}
+			//EventManager.TriggerEvent(new FreePointHandlerEvent(false, c.gameObject));
+		}
+
     }
 }

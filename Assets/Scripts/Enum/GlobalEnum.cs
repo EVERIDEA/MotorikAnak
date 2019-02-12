@@ -13,7 +13,8 @@ public enum EMainMenuButton
 	LEVEL9, LEVEL10, LEVEL11, LEVEL12,
 	LEVEL13, LEVEL14, LEVEL15, LEVEL16,
 	LEVEL17, LEVEL18, LEVEL19, LEVEL20,
-	LEVEL21, LEVEL22, LEVEL23, LEVEL24
+	LEVEL21, LEVEL22, LEVEL23, LEVEL24,
+	LEVEL25, LEVEL26, LEVEL27
 }
 
 public enum EFailType
@@ -26,12 +27,13 @@ public enum EFailType
     PointEndTarget, // point not 1st object but on the end object
 	HitBlocker, // hit blocker, had intention to cheat
 	MidpointSkipped, // Midpoint object not crossed
-    FreepointCompleted //Freepoint completed
+    FreepointCompleted, //Freepoint completed
+	WrongAnswer //Wrong Picked Answer
 }
 
 public enum EObjectTarget
 {
-    START_POINT, END_POINT, OBSTACLE, BLOCKER, MID_POINT, FREE_POINT
+    START_POINT, END_POINT, OBSTACLE, BLOCKER, MID_POINT, FREE_POINT, CROSS_POINT
 }
 
 public enum GameplayType
